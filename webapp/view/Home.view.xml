@@ -1,0 +1,55 @@
+<mvc:View
+    controllerName="study.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <HeaderContainer id="headerContainerHomeView">
+            <Button
+                icon="sap-icon://hello-world"
+                id="buttonTestComponent"
+                press=".onOpenDialog"
+            />
+        </HeaderContainer>
+        <content>
+            <Panel
+                id="_planelIdHome"
+                headerText="{i18n>openDialogButtonText}"
+                class="sapUiResponsiveMargin"
+                width="auto"
+            >
+                <content>
+                    <Button
+                        id="helloDialogButton"
+                        icon="sap-icon://world"
+                        text="{i18n>openDialogButtonText}"
+                        press=".onOpenDialog"
+                        class="sapUiSmallMarginEnd"
+                    />
+                    <Button
+                        text="{i18n>showHelloButtonText}"
+                        press=".onShowHello"
+                        id="_buttonHello"
+                        class="myAppStudy"
+                    />
+                    <Input
+                        value="{/recipient/name}"
+                        description="Hello {/recipient/name}"
+                        valueLiveUpdate="true"
+                        width="60%"
+                        id="_inputHello"
+                    />
+                    <FormattedText
+                        id="_textHello"
+                        htmlText="Hello {recipient/name}"
+                        class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"
+                    />
+                </content>
+            </Panel>
+            <mvc:XMLView id="invoiceListId" viewName="study.view.InvoiceList"></mvc:XMLView>
+        </content>
+    </Page>
+</mvc:View>
