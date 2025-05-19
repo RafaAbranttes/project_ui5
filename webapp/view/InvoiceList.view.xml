@@ -1,34 +1,50 @@
-<mvc:View 
+<mvc:View
     controllerName="study.controller.InvoiceList"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
 >
-    <List 
-    id="listInvoicesId"
+    <List
+        id="invoiceList"
         headerText="{i18n>invoiceListTitle}"
         class="sapUiResponsiveMargin"
         width="auto"
         items="{invoices>/Invoices}"
     >
+        <headerToolbar>
+            <Toolbar id="idToolbar">
+                <Title
+                    id="idtitleToolbar"
+                    text="{i18n>invoiceListTitle}"
+                />
+                <ToolbarSpacer id="idToolbarSpacer" />
+                <SearchField
+                    id="idSerachField"
+                    width="50%"
+                    search=".onFilterInvoices"
+                />
+            </Toolbar>
+        </headerToolbar>
         <items>
-            <ObjectListItem 
+            <ObjectListItem
                 id="objectListItemId"
                 title="{invoices>Quantity} x {invoices>ProductName}"
-            number="{
+                number="{
                 parts: [{path: 'invoices>ExtendedPrice'}, {path: 'view>/currency'}],
                 type: 'sap.ui.model.type.Currency',
                 formatOptions: {showMeasure: false}
             }"
-            numberUnit="{view>/currency}"
-            numberState="{= ${invoices>ExtendedPrice} > 50 ? 'Error' : 'Success'}"
+                numberUnit="{view>/currency}"
+                numberState="{= ${invoices>ExtendedPrice} > 50 ? 'Error' : 'Success'}"
             >
-            <firstStatus>
-                <ObjectStatus id="_objectStatus" text="{
+                <firstStatus>
+                    <ObjectStatus
+                        id="_objectStatus"
+                        text="{
                     path: 'invoices>Status',
                     formatter: '.formatter.statusText'
-                }"></ObjectStatus>
-            </firstStatus>
-            
+                }"
+                    />
+                </firstStatus>
             </ObjectListItem>
         </items>
     </List>
